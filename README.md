@@ -1,1 +1,1 @@
-# Vepkhistkaosani-Aphorisms
+# `georgian treasure `
