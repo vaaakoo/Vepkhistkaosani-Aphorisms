@@ -4,6 +4,7 @@
 window.onload = () => {
    const card = document.body.querySelector('article');
 
+   let count = 0;
 async function getAdvice() {
    try{
       const API_URL = './vefxi.json';
@@ -12,15 +13,28 @@ async function getAdvice() {
          return data.json();
       }).then((ObjectData) => {
 
+      
       const keysdata = Object.keys(ObjectData);
       const keysdataLenght = Object.keys(ObjectData).length;
-      const randomNum = Math.floor(Math.random()*keysdataLenght);
-      const advice = ObjectData[keysdata[randomNum]].text;
-      const adviceId = ObjectData[keysdata[randomNum]].id;
+      
+      // const randomNum = Math.floor(Math.random()*keysdataLenght);
+      const advice = ObjectData[keysdata[count]].text;
+      const adviceId = ObjectData[keysdata[count]].id;
+      
+      // sorted 1-20
+      console.log(advice);
+      console.log(adviceId);
+      count++;
 
+      if(count >= 21) {
+         count = 1;
+      }
+      
       document.getElementById("advice").innerHTML = advice;
       document.getElementById("adviceId").innerHTML = adviceId;
+
       });
+      
    }
    catch(err){
       console.error('sorry');
